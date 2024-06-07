@@ -1,0 +1,13 @@
+.App {
+    display: flex;
+    height: 100vh;
+}
+
+.mainPage {
+    margin-left: 250px;
+    padding: 20px;
+}
+
+.sidebars {
+    display: flex;
+}

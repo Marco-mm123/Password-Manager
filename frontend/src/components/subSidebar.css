@@ -1,0 +1,55 @@
+.subSidebar {
+    flex: 1;
+    height: 100%;
+    width: 250px;
+    top: 0;
+    background-color: #dfeeff;
+    padding-top: 20px;
+}
+
+.subSidebar ul li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.subSidebar h2 {
+    color: black;
+    text-align: center;
+    font-size: 3rem;
+}
+
+.subSidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+
+.origins {
+    background-color: transparent;
+    border: none;
+    width: 80%;
+    height: 2rem;
+    border-radius: 15px;
+}
+
+.origins:hover {
+    background-color: rgb(200, 200, 200);
+}
+
+.deleteButton {
+    margin: auto;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: transparent;
+    background-image: url("../images/delete.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 10%;
+    border: none;
+}
+
+.deleteButton:hover {
+    background-image: url("../images/delete_hover.png");
+}

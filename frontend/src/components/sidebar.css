@@ -1,0 +1,31 @@
+.sidebar {
+    height: 100%;
+    width: 250px;
+    top: 0;
+    left: 0;
+    background-color: aliceblue;
+    padding-top: 20px;
+}
+
+.sidebar h2 {
+    color: black;
+    text-align: center;
+    font-size: 3rem;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li button:hover {
+    background-color: rgb(200, 200, 200);
+}
+
+.categories {
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    height: 2rem;
+    border-radius: 15px;
+}
