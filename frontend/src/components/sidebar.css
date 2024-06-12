@@ -3,7 +3,7 @@
     width: 250px;
     top: 0;
     left: 0;
-    background-color: aliceblue;
+    background-color: rgb(200, 200, 200);
     padding-top: 20px;
 }
 
@@ -18,14 +18,14 @@
     padding: 0;
 }
 
-.sidebar ul li button:hover {
-    background-color: rgb(200, 200, 200);
-}
-
 .categories {
     background-color: transparent;
     border: none;
     width: 100%;
     height: 2rem;
     border-radius: 15px;
+}
+
+.categories:hover {
+    background-color: rgb(180, 180, 180);
 }

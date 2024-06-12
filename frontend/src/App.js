@@ -1,19 +1,22 @@
-import React from "react";
-import Sidebar from "./components/sidebar";
-import SubSidebar from "./components/subSidebar";
+import React, {useState} from "react";
 import MainPage from "./pages/mainPage";
+import LoginPage from "./pages/loginPage";
 import './App.css'
 
 
 function App() {
+    const [login, setLogin] = useState(false);
+
+    const switchToLogin = () => {
+        setLogin(!login);
+    }
+
   return (
-    <div className="App">
-        <div className="sidebars">
-            <Sidebar />
-            <SubSidebar />
-        </div>
-      <MainPage />
-    </div>
+      <div className="App">
+          {
+              login ? <LoginPage func={switchToLogin}/> : <MainPage func={switchToLogin}/>
+          }
+      </div>
   );
 }
 

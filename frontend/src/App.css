@@ -2,3 +2,14 @@ html, body {
     margin: 0;
     padding: 0;
 }
+
+#loginButton {
+    top: 0;
+    right: 0;
+    height: 1.5rem;
+    width: 4rem;
+}
+
+header{
+    top: 0;
+}

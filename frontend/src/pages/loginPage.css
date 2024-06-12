@@ -1,0 +1,50 @@
+.LoginPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    background-color: #f0f0f0;
+}
+
+.loginContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 7rem;
+    border: 1px solid #333;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.loginContainer h1 {
+    margin-bottom: 1rem;
+}
+
+#loginForm {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#loginForm label {
+    margin: 0.5rem 0;
+}
+
+#loginForm input {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border: 1px solid #333;
+    border-radius: 5px;
+    width: 100%;
+}
+
+#backToMain {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+}
