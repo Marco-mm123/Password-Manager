@@ -2,21 +2,24 @@ import React from "react";
 import './mainPage.css';
 import Sidebar from "../components/sidebar";
 import SubSidebar from "../components/subSidebar";
+import AddPassword from "../pages/CreatePages/addPassword";
 
-function mainPage(props) {
+function MainPage(props) {
+
     return (
         <>
             <div className="sidebars">
                 <Sidebar/>
-                <SubSidebar/>
+                <SubSidebar addPassword_func={props.addPassword_func} isAddPassword={props.addPassword}/>
             </div>
-            <div className="mainPage">
-                <h1>Welcome to the Website</h1>
-                <p>This is Main content 👍</p>
-            </div>
-            <button id="loginButton" onClick={props.func}>Login</button>
+            {props.addPassword ? <AddPassword /> :
+                <div className="mainPage">
+                    <h1>Welcome to the Website</h1>
+                    <p>This is Main content 👍</p>
+                </div>}
+            <button id="loginButton" onClick={props.login_func}>Login</button>
         </>
     )
 }
 
-export default mainPage;
+export default MainPage;
