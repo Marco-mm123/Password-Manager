@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from "react";
-import './subSidebar.css';
+import './Sidebar.css';
 import OriginItem from './OriginItem';
 
-function SubSidebar(props) {
+function Sidebar(props) {
     const [origins, setOrigins] = useState([])
 
     useEffect(() => {
@@ -21,15 +21,25 @@ function SubSidebar(props) {
         });
     }, []);
 
+    const handleClick = (e) => {
+        e.preventDefault();
+        props.addPassword_func();
+        if(props.isAddPassword) {
+            props.whichPage_func("main")
+        }else{
+            props.whichPage_func("password")
+        }
+    }
+
     return (
         <div className="subSidebar">
-            <button id="newPasswordButton" onClick={props.addPassword_func}>{props.isAddPassword ? "Go Back" : "New Password"}</button>
+            <button id="newPasswordButton" onClick={handleClick}>{props.isAddPassword ? "Go Back" : "New Password"}</button>
             <h2>Password</h2>
             <ul id="AllOrigins">
-                {origins.map(origin => <OriginItem origin={origin} />)}
+                {origins.map(origin => <OriginItem origin={origin} whichPage_func={props.whichPage_func} />)}
             </ul>
         </div>
     )
 }
 
-export default SubSidebar;
+export default Sidebar;

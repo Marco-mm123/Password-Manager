@@ -1,11 +1,16 @@
 import React from 'react';
+import DeleteButton from './OriginItemButtons/deleteButton';
 
-function OriginItem({ origin }) {
+function OriginItem(props) {
+    const handleClick = (e) => {
+        e.preventDefault();
+        props.whichPage_func(`${props.origin.origin_id}`);
+    }
     return (
-        <li id={origin.origin_id}>
-            <button id={origin.origin_name} className="origins">{origin.origin_name}</button>
+        <li id={props.origin.origin_id}>
+            <button className="origins" onClick={handleClick}>{props.origin.origin_name}</button>
             <button className="editButton"></button>
-            <button className="deleteButton"></button>
+            <DeleteButton origin={props.origin} />
         </li>
     );
 }

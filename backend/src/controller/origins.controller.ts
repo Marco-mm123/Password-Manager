@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-import { Controller, Get, Post, Body } from "@nestjs/common";
+import { Controller, Get, Post, Body, Delete, Param } from "@nestjs/common";
 import { OriginsService } from "../services/origins.service";
 import { OriginsAddDto } from "../Dto/origins-add";
 
@@ -16,5 +16,10 @@ export class OriginsController {
   @Post()
   createOrigin(@Body() origin: OriginsAddDto) {
     return this.originsService.createOrigin(origin);
+  }
+
+  @Delete(":id")
+  deleteOrigin(@Param('id') id: number) {
+    return this.originsService.deleteOrigin(id);
   }
 }

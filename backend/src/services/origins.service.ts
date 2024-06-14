@@ -13,4 +13,12 @@ export class OriginsService {
   async createOrigin(data: Prisma.OriginCreateInput): Promise<Origin> {
     return this.prisma.origin.create({ data });
   }
+
+  async deleteOrigin(id: number) {
+    return this.prisma.origin.delete({
+      where: {
+        origin_id: Number(id),
+      },
+    });
+  }
 }

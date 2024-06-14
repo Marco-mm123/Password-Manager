@@ -1,22 +1,26 @@
 import React from "react";
 import './mainPage.css';
-import Sidebar from "../components/sidebar";
-import SubSidebar from "../components/subSidebar";
+import Sidebar from "../components/Sidebar";
 import AddPassword from "../pages/CreatePages/addPassword";
+import MainPageContent from "./mainPageContent";
+import PasswordPage from "./passwordPage";
 
 function MainPage(props) {
 
     return (
         <>
             <div className="sidebars">
-                <Sidebar/>
-                <SubSidebar addPassword_func={props.addPassword_func} isAddPassword={props.addPassword}/>
+                <Sidebar addPassword_func={props.addPassword_func} whichPage_func={props.whichPage_func} isAddPassword={props.addPassword}/>
             </div>
-            {props.addPassword ? <AddPassword /> :
-                <div className="mainPage">
-                    <h1>Welcome to the Website</h1>
-                    <p>This is Main content 👍</p>
-                </div>}
+            {
+                props.whichPage === "password" ? <AddPassword whichPage_func={props.whichPage_func} /> : null
+            }
+            {
+                props.whichPage === "main" ? <MainPageContent /> : null
+            }
+            {
+                props.whichPage !== "main" && props.whichPage !== "password" ? <PasswordPage whichPage_func={props.whichPage_func} whichPage={props.whichPage} /> : null
+            }
             <button id="loginButton" onClick={props.login_func}>Login</button>
         </>
     )

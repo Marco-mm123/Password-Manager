@@ -12,7 +12,10 @@ function LoginPage(props) {
                 <label form="password">Password</label>
                 <input type="password" id="password" name="password" required></input><br />
             </form>
-            <button id="backToMain" onClick={props.func}>Back</button>
+                <div className="loginButtons">
+                    <button className="loginButton" onClick={props.func}>Back</button>
+                    <button className="loginButton" onClick={props.register_func}>Register</button>
+                </div>
             </div>
         </div>
     )
