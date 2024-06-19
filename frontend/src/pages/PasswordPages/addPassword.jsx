@@ -46,18 +46,34 @@ function AddPassword() {
         window.location.reload()
     }
 
+    const handleGenPasswd = async () => {
+        const generatedPassword = await fetch("/passwords/gen", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            }
+        })
+        const generatedPasswordJson = await generatedPassword.json()
+        setSitePassword(generatedPasswordJson.password)
+        document.getElementById("site_password").value = generatedPasswordJson.password
+    }
+
     return (
         <div className="addPassword">
             <h2>Add Password</h2>
             <form name="addPassword" id="addPassword" onSubmit={handleAddPassword}>
                 <label htmlFor="origin_name">Where is this Password from:</label>
-                <input type="text" id="origin_name" name="origin_name" required onChange={e => setOriginName(e.target.value)} /> <br />
+                <input type="text" id="origin_name" name="origin_name" required
+                       onChange={e => setOriginName(e.target.value)}/> <br/>
                 <label htmlFor="origin_url">Enter URL:</label>
-                <input type="text" id="origin_url" name="origin_url" required onChange={e => setOriginUrl(e.target.value)} />
+                <input type="text" id="origin_url" name="origin_url" required
+                       onChange={e => setOriginUrl(e.target.value)}/>
                 <label htmlFor="site_password">Enter Password:</label>
-                <input type="password" id="site_password" name="site_password" required onChange={e => setSitePassword(e.target.value)} />
+                <input type="password" id="site_password" name="site_password" required
+                       onChange={e => setSitePassword(e.target.value)}/>
                 <button type="submit">Submit</button>
             </form>
+            <button onClick={handleGenPasswd}>Generate Password</button>
         </div>
     )
 }

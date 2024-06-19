@@ -3,8 +3,7 @@ import './Sidebar.css';
 import OriginItem from './OriginItem';
 
 function Sidebar(props) {
-    const [origins, setOrigins] = useState([])
-
+    const [origins, setOrigins] = useState([]);
     useEffect(() => {
         async function getOrigins(){
             const allOrigins = await fetch('/origins', {
@@ -34,7 +33,7 @@ function Sidebar(props) {
     return (
         <div className="subSidebar">
             <button id="newPasswordButton" onClick={handleClick}>{props.isAddPassword ? "Go Back" : "New Password"}</button>
-            <h2>Password</h2>
+            <h2>Passwords</h2>
             <ul id="AllOrigins">
                 {origins.map(origin => <OriginItem origin={origin} whichPage_func={props.whichPage_func} />)}
             </ul>

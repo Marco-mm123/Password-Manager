@@ -2,7 +2,6 @@
 
 import { Body, Controller, Get, Post } from "@nestjs/common";
 import { UsersService } from "../services/users.service";
-import { UsersAddDto} from "../Dto/user-add";
 import { User } from "@prisma/client";
 
 @Controller('users')
@@ -10,12 +9,12 @@ export class UsersController {
   constructor(private usersService: UsersService) {}
 
   @Get()
-  getUsers() {
+  getUsers(): Promise<User[]> {
     return this.usersService.getUsers();
   }
 
   @Post()
-  createUser(@Body() data: UsersAddDto): Promise<User>{
+  createUser(@Body() data: User): Promise<User>{
     return this.usersService.createUser(data);
   }
 }

@@ -8,6 +8,9 @@ function DeleteButton(props) {
         await fetch(`/origins/${origin_id}`, {
             method: "DELETE",
         })
+        await fetch(`/passwords/${origin_id}/${1}`, {
+            method: "DELETE",
+        })
         window.location.reload()
     }
 

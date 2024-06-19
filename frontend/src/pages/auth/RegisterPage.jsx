@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import { v4 as uuidv4 } from 'uuid';
-import { compare, hash } from 'bcryptjs';
 import './RegisterPage.css';
 
 function RegisterPage(props) {
@@ -11,7 +10,6 @@ function RegisterPage(props) {
     const handleRegister = async (e) => {
         e.preventDefault()
         const key = uuidv4();
-        const hashed = await hash(password, 10)
         await fetch("/users", {
             method: "POST",
             headers: {
@@ -20,7 +18,7 @@ function RegisterPage(props) {
             body: JSON.stringify({
                 username: username,
                 email: email,
-                password: hashed,
+                password: password,
                 personal_key: key,
             })
         })

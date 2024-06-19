@@ -1,5 +1,6 @@
 import React from 'react';
 import DeleteButton from './OriginItemButtons/deleteButton';
+import EditButton from './OriginItemButtons/editButton';
 
 function OriginItem(props) {
     const handleClick = (e) => {
@@ -9,7 +10,7 @@ function OriginItem(props) {
     return (
         <li id={props.origin.origin_id}>
             <button className="origins" onClick={handleClick}>{props.origin.origin_name}</button>
-            <button className="editButton"></button>
+            <EditButton whichPage_func={props.whichPage_func} origin={props.origin}/>
             <DeleteButton origin={props.origin} />
         </li>
     );
