@@ -12,16 +12,26 @@ function EditPassword(props) {
     useEffect(() => {
         async function fetchPassword() {
             const origin_id = Number(props.whichPage.split("_")[0]);
-            const password = await fetch(`/passwords/${Number(origin_id)}/${1}`, {
+            const user_get = await fetch("/auth/profile", {
+                method: "GET",
+                headers: {
+                    "Authorization": `Bearer ${props.JWT}`,
+                }
+            })
+            const user_get_json = await user_get.json();
+            const user_id = user_get_json.userId;
+            const password = await fetch(`/passwords/${Number(origin_id)}/${user_id}`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
+                    "Authorization": `Bearer ${props.JWT}`,
                 },
             });
             const origin = await fetch(`/origins/${Number(origin_id)}`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
+                    "Authorization": `Bearer ${props.JWT}`,
                 },
             })
             const passwordJson = await password.json();
@@ -42,6 +52,7 @@ function EditPassword(props) {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
+                "Authorization": `Bearer ${props.JWT}`,
             },
             body: JSON.stringify({
                 origin_id: origin_id,
@@ -49,10 +60,19 @@ function EditPassword(props) {
                 origin_url: originURL
             })
         })
-        await fetch(`/passwords/${origin_id}/${1}`, {
+        const user_get = await fetch("/auth/profile", {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${props.JWT}`,
+            }
+        })
+        const user_get_json = await user_get.json();
+        const user_id = user_get_json.userId;
+        await fetch(`/passwords/${origin_id}/${user_id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
+                "Authorization": `Bearer ${props.JWT}`,
             },
             body: JSON.stringify({
                 origin_id: origin_id,
@@ -60,7 +80,7 @@ function EditPassword(props) {
                 password: password
             })
         })
-        window.location.reload();
+        props.whichPage_func("main");
     }
 
 

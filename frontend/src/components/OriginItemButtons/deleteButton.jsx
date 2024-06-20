@@ -7,11 +7,11 @@ function DeleteButton(props) {
         const origin_id = props.origin.origin_id
         await fetch(`/origins/${origin_id}`, {
             method: "DELETE",
+            headers: {
+                "Authentication": `Bearer ${props.JWT}`,
+            }
         })
-        await fetch(`/passwords/${origin_id}/${1}`, {
-            method: "DELETE",
-        })
-        window.location.reload()
+        props.whichPage_func("main")
     }
 
     return (

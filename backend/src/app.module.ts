@@ -8,14 +8,28 @@ import { UsersController } from './controller/users.controller';
 import { UsersService } from './services/users.service';
 import { PasswordController } from './controller/password.controller';
 import { PasswordService } from './services/password.service';
+import { AuthService } from './auth/auth.service';
+import { PassportModule } from '@nestjs/passport';
+import { LocalStrategy } from './auth/local.strategy';
+import { AuthController } from './auth/auth.controller';
+import { JwtModule } from '@nestjs/jwt';
+import { jwtConstants } from './auth/constants';
+import { JwtStrategy } from './auth/jwt.strategy';
 
 @Module({
-  imports: [],
+  imports: [
+    PassportModule,
+    JwtModule.register({
+      secret: jwtConstants.secret,
+      signOptions: { expiresIn: '500s' },
+    }),
+  ],
   controllers: [
     AppController,
     OriginsController,
     UsersController,
     PasswordController,
+    AuthController,
   ],
   providers: [
     AppService,
@@ -23,6 +37,9 @@ import { PasswordService } from './services/password.service';
     OriginsService,
     UsersService,
     PasswordService,
+    LocalStrategy,
+    AuthService,
+    JwtStrategy,
   ],
 })
 export class AppModule {}

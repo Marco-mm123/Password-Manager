@@ -22,7 +22,7 @@ function RegisterPage(props) {
                 personal_key: key,
             })
         })
-        props.func()
+        props.whichPage_func("login")
     }
 
     return (

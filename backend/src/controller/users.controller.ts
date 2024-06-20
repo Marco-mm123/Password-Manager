@@ -1,8 +1,6 @@
-/*eslint-disable */
-
-import { Body, Controller, Get, Post } from "@nestjs/common";
-import { UsersService } from "../services/users.service";
-import { User } from "@prisma/client";
+import { Body, Controller, Get, Post } from '@nestjs/common';
+import { UsersService } from '../services/users.service';
+import { User } from '@prisma/client';
 
 @Controller('users')
 export class UsersController {
@@ -14,7 +12,7 @@ export class UsersController {
   }
 
   @Post()
-  createUser(@Body() data: User): Promise<User>{
+  createUser(@Body() data: User): Promise<User> {
     return this.usersService.createUser(data);
   }
 }

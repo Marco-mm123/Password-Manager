@@ -7,10 +7,19 @@ function PasswordPage(props) {
 
     useEffect(() => {
         const showPassword = async () => {
-            const passwords = await fetch(`/passwords/${Number(props.whichPage)}/${1}`, {
+            const user_get = await fetch("/auth/profile", {
+                method: "GET",
+                headers: {
+                    "Authorization": `Bearer ${props.JWT}`,
+                }
+            })
+            const user_get_json = await user_get.json();
+            const user_id = user_get_json.userId;
+            const passwords = await fetch(`/passwords/${Number(props.whichPage)}/${user_id}`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
+                    "Authorization": `Bearer ${props.JWT}`
                 },
             })
             const passwordsJson = await passwords.json()
@@ -27,6 +36,7 @@ function PasswordPage(props) {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
+                    "Authorization": `Bearer ${props.JWT}`,
                 },
             })
             const originJson = await origin.json()

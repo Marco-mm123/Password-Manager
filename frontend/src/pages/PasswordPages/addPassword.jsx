@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import './addPassword.css';
 
-function AddPassword() {
+function AddPassword(props) {
     const [origin_name, setOriginName] = useState("");
     const [origin_url, setOriginUrl] = useState("");
     const [site_password, setSitePassword] = useState("");
@@ -12,6 +12,7 @@ function AddPassword() {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
+                "Authorization": `Bearer ${props.JWT}`,
             },
             body: JSON.stringify({
                 origin_name: origin_name,
@@ -22,6 +23,7 @@ function AddPassword() {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
+                "Authorization": `Bearer ${props.JWT}`,
             }
         })
         const originsJSON = await origins.json()
@@ -32,21 +34,30 @@ function AddPassword() {
                 password_origin_id = Number(originsJSONElement.origin_id)
             }
         }
+        const user_get = await fetch("/auth/profile", {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${props.JWT}`,
+            }
+        })
+        const user_get_json = await user_get.json();
+        const user_id = user_get_json.userId;
         await fetch("/passwords", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
+                "Authorization": `Bearer ${props.JWT}`
             },
             body: JSON.stringify({
                 origin_id: password_origin_id,
-                user_id: 1,
+                user_id: user_id,
                 password: site_password,
             })
         })
-        window.location.reload()
+        props.whichPage_func("main")
     }
 
-    const handleGenPasswd = async () => {
+    const generatePasswd = async () => {
         const generatedPassword = await fetch("/passwords/gen", {
             method: "GET",
             headers: {
@@ -54,8 +65,14 @@ function AddPassword() {
             }
         })
         const generatedPasswordJson = await generatedPassword.json()
-        setSitePassword(generatedPasswordJson.password)
-        document.getElementById("site_password").value = generatedPasswordJson.password
+        return generatedPasswordJson.password
+    }
+
+    const handleGenPasswd = () => {
+        generatePasswd().then(r => {
+            setSitePassword(r)
+            document.getElementById("site_password").value = r
+        })
     }
 
     return (
