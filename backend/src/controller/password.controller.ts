@@ -16,6 +16,12 @@ export class PasswordController {
   }
 
   @UseGuards(JwtAuthGuard)
+  @Get("/user/:user_id")
+  async getPasswordByUser(@Param("user_id") user_id: string): Promise<Password[]> {
+    return this.passwordService.getPasswordByUser(Number(user_id));
+  }
+
+  @UseGuards(JwtAuthGuard)
   @Get("/:origin_id/:user_id")
   async getPasswordById(
     @Param("origin_id") origin_id: string,
