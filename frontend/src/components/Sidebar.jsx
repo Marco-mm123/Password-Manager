@@ -64,13 +64,11 @@ function Sidebar(props) {
     }
 
     return (
-        <div className="subSidebar">
-            <button id="newPasswordButton"
-                    onClick={handleClick}>{props.whichPage === "password" ? "Go Back" : "New Password"}</button>
+        <div className="sidebar">
+            <button id="newPasswordButton" onClick={handleClick}>{props.whichPage === "password" ? "Go Back" : "New Password"}</button>
             <h2>Passwords</h2>
             <ul id="AllOrigins">
-                {origins.map(origin => <OriginItem origin={origin} whichPage_func={props.whichPage_func}
-                                                   JWT={props.JWT}/>)}
+                {origins.map(origin => <OriginItem origin={origin} whichPage_func={props.whichPage_func} JWT={props.JWT}/>)}
             </ul>
         </div>
     )

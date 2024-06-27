@@ -1,14 +1,9 @@
+@import url("./variables.css");
+
 html, body {
     margin: 0;
     padding: 0;
-}
-
-#loginButton {
-    position: fixed;
-    top: 0;
-    right: 0;
-    height: 1.5rem;
-    width: 4rem;
+    background-color: var(--main);
 }
 
 header{

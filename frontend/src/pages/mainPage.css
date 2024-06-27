@@ -8,6 +8,28 @@
     padding: 20px;
 }
 
-.sidebars {
-    display: flex;
+#loginButton {
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: var(--login-button);
+    color: var(--sidebar-text);
+    border: none;
+    margin: 1rem;
+    padding: 0.75rem 1.5rem 0.75rem 1.5rem;
+    border-radius: 15px;
+    font-size: larger;
+    transition: transform 200ms;
+}
+
+#loginButton:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.welcome-container {
+    margin: auto;
+    text-align: center;
+    padding: 5rem 2rem;
+    border: black groove;
 }

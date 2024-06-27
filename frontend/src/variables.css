@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&display=swap');
+
+:root {
+    --sidebar: #202f3f;
+    --main: #ffffff;
+    --sidebar-text: #eff0f1;
+    --main-text: #282629;
+    --focus-color: #036eea;
+    --sidebar-font: 'Radio Canada Big', sans-serif;
+    --login-button: #ff2d2d;
+}

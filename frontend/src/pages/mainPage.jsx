@@ -11,16 +11,15 @@ import LoginPage from "./auth/loginPage";
 function MainPage(props) {
 
     function handleLoginClick() {
-        props.setWhichPage("login");
+        props.setJWT("");
+        props.whichPage_func("login");
     }
 
     return (
         <>
-            <div className="sidebars">
-                {
-                    props.whichPage === "login" || props.whichPage === "register" ? null : <Sidebar addPassword_func={props.addPassword_func} whichPage_func={props.whichPage_func} whichPage={props.whichPage} JWT={props.JWT}/>
-                }
-            </div>
+            {
+                props.whichPage !== "login" && props.whichPage !== "register" ? <Sidebar addPassword_func={props.addPassword_func} whichPage_func={props.whichPage_func} whichPage={props.whichPage} JWT={props.JWT}/> : null
+            }
             {
                 props.whichPage === "register" ? <RegisterPage whichPage_func={props.setWhichPage} /> : null
             }
@@ -39,7 +38,10 @@ function MainPage(props) {
             {
                 props.whichPage !== "main" && props.whichPage !== "password" && props.whichPage.split("_")[1] !== "edit" && props.whichPage !== "login" && props.whichPage !== "register" ? <PasswordPage whichPage_func={props.whichPage_func} whichPage={props.whichPage} JWT={props.JWT} setJWT={props.setJWT} /> : null
             }
-            <button id="loginButton" onClick={handleLoginClick}>Login</button>
+            {
+                props.whichPage !== "login" && props.whichPage !== "register" ? <button id="loginButton" onClick={handleLoginClick}>Logout</button> : null
+            }
+
         </>
     )
 }

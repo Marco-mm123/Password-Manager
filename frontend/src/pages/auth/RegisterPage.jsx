@@ -25,20 +25,29 @@ function RegisterPage(props) {
         props.whichPage_func("login")
     }
 
+    const handleBackClick = () => {
+        props.whichPage_func("login")
+    }
+
     return (
-        <div className="registerContainer">
-            <h1>Register</h1>
-            <form name="registerForm" id="registerForm" onSubmit={handleRegister}>
-                <label htmlFor="username">Username: </label>
-                <input type="text" id="username" name="username" required onChange={e => setUsername(e.target.value)}/>
-                <br/>
-                <label htmlFor="email">Email: </label>
-                <input type="email" id="email" name="email" required onChange={e => setEmail(e.target.value)}/> <br/>
-                <label htmlFor="password">Password: </label>
-                <input type="password" id="password" name="password" required onChange={e => setPassword(e.target.value)}/> <br/>
-                <button type="submit">Register</button>
-            </form>
-            <button className="registerButton" onClick={props.func}>Back</button>
+        <div className="registerPage">
+            <div className="registerContainer">
+                <h1>Register</h1>
+                <form name="registerForm" id="registerForm" onSubmit={handleRegister}>
+                    <label htmlFor="username">Username: </label>
+                    <input type="text" id="username" name="username" required
+                           onChange={e => setUsername(e.target.value)}/>
+                    <br/>
+                    <label htmlFor="email">Email: </label>
+                    <input type="email" id="email" name="email" required onChange={e => setEmail(e.target.value)}/>
+                    <br/>
+                    <label htmlFor="password">Password: </label>
+                    <input type="password" id="password" name="password" required
+                           onChange={e => setPassword(e.target.value)}/> <br/>
+                        <button className="registerButton" type="submit">Register</button>
+                </form>
+                <button className="registerButton" onClick={handleBackClick}>Back</button>
+            </div>
         </div>
     )
 }

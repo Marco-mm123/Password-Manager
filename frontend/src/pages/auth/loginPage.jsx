@@ -23,10 +23,6 @@ function LoginPage(props) {
         props.whichPage_func("main")
     }
 
-    function handleBackButton() {
-        props.whichPage_func("main")
-    }
-
     function handleRegisterButton() {
         props.whichPage_func("register")
     }
@@ -34,20 +30,15 @@ function LoginPage(props) {
     return (
         <div className="LoginPage">
             <div className="loginContainer">
-            <h1>Login</h1>
-            <form name="loginForm" id="loginForm" onSubmit={handleSubmit}>
-                <label form="email">Email</label>
-                <input type="email" id="email" name="email" required></input> <br />
-                <label form="password">Password</label>
-                <input type="password" id="password" name="password" required></input><br />
-                <div className="SubmitButton">
-                    <button className="loginButton" type="submit">Login</button>
-                </div>
-            </form>
-                <div className="loginButtons">
-                    <button className="loginButton" onClick={handleBackButton}>Back</button>
-                    <button className="loginButton" onClick={handleRegisterButton}>Register</button>
-                </div>
+                <h1>Login</h1>
+                <form name="loginForm" id="loginForm" onSubmit={handleSubmit}>
+                    <label form="email">Email</label>
+                    <input type="email" id="email" name="email" required></input> <br/>
+                    <label form="password">Password</label>
+                    <input type="password" id="password" name="password" required></input><br/>
+                        <button className="loginButton" type="submit">Login</button>
+                </form>
+                <button className="loginButton" onClick={handleRegisterButton}>Register</button>
             </div>
         </div>
     )

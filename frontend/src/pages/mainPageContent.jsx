@@ -2,9 +2,9 @@ import React from "react";
 
 function MainPageContent() {
     return (
-        <div className="mainPage">
-            <h1>Welcome to the Website</h1>
-            <p>This is Main content 👍</p>
+        <div className="welcome-container">
+            <h1>Welcome to the Password Manager</h1>
+            <p>Please select a password to get started.</p>
         </div>
     )
 }

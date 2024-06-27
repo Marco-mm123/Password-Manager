@@ -1,26 +1,25 @@
-.subSidebar {
-    flex: 1;
+@import url("../variables.css");
+
+.sidebar {
     height: 100%;
     width: 250px;
-    top: 0;
-    background-color: #dcdcdc;
     padding-top: 1rem;
+    background-color: var(--sidebar);
 }
 
-.subSidebar ul li {
+.sidebar ul li {
     display: flex;
-    align-items: center;
     justify-content: space-between;
 }
 
-.subSidebar h2 {
-    color: black;
+.sidebar h2 {
     text-align: center;
     font-size: 3rem;
     margin-top: 1rem;
+    color: var(--sidebar-text);
 }
 
-.subSidebar ul {
+.sidebar ul {
     list-style-type: none;
     padding: 0;
 }
@@ -31,11 +30,13 @@
     border: none;
     width: 80%;
     height: 2rem;
-    border-radius: 15px;
+    border-radius: 10px;
+    color: var(--sidebar-text);
+    font: var(--sidebar-font);
 }
 
 .origins:hover {
-    background-color: rgb(200, 200, 200);
+    background-color: var(--focus-color);
 }
 
 .deleteButton {
@@ -47,7 +48,6 @@
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    border-radius: 10%;
     border: none;
 }
 
@@ -64,7 +64,6 @@
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    border-radius: 10%;
     border: none;
 }
 
@@ -74,12 +73,14 @@
 
 #newPasswordButton {
     border: none;
-    border-radius: 15px;
+    border-radius: 10px;
     background-color: transparent;
-    width: 100%;
+    width: 90%;
     height: 2rem;
+    color: var(--sidebar-text);
+    margin-left: 5%;
 }
 
 #newPasswordButton:hover {
-    background-color: rgb(200, 200, 200);
+    background-color: var(--focus-color);
 }
