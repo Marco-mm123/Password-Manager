@@ -4,6 +4,7 @@ import { JwtService } from '@nestjs/jwt';
 import { User } from '@prisma/client';
 import * as bcrypt from 'bcrypt';
 
+// all the services and methods that are used in the auth controller
 @Injectable()
 export class AuthService {
   constructor(

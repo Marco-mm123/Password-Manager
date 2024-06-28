@@ -16,6 +16,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from './auth/constants';
 import { JwtStrategy } from './auth/jwt.strategy';
 
+// the main module of the app that imports all the controllers and services
 @Module({
   imports: [
     PassportModule,

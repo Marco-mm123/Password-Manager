@@ -2,6 +2,7 @@ import React from 'react';
 import DeleteButton from './OriginItemButtons/deleteButton';
 import EditButton from './OriginItemButtons/editButton';
 
+// in here the item on the Sidebar gets created
 function OriginItem(props) {
     const handleClick = (e) => {
         e.preventDefault();

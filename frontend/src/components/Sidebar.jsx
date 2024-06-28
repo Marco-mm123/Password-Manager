@@ -5,13 +5,16 @@ import OriginItem from './OriginItem';
 function Sidebar(props) {
     const [origins, setOrigins] = useState([]);
 
+    // everytime the props.whichPage Variable gets changed the useEffect gets triggered
     useEffect(() => {
         getOrigins().then(r => {
             console.log('Origins fetched');
         });
     }, [props.whichPage]);
 
+    // function that fetches all origins from the user
     async function getOrigins() {
+        //gets the user_id using the JWT
         const user_get = await fetch("/auth/profile", {
             method: "GET",
             headers: {
@@ -27,6 +30,7 @@ function Sidebar(props) {
                 "Authorization": `Bearer ${props.JWT}`,
             }
         })
+        //checks if the JWT is still valid, if not the user gets redirected to the login page
         if (user_all_passwords.status === 401) {
             alert("Your Session has expired. Please login again.")
             props.whichPage_func("login")
@@ -34,6 +38,7 @@ function Sidebar(props) {
             const user_all_passwordsJson = await user_all_passwords.json();
             let user_all_passwordsArray = [];
 
+            //(ChatGPT) makes sure that the user_all_passwordsJson is an array, so it doesn't throw an error
             if (Array.isArray(user_all_passwordsJson)) {
                 user_all_passwordsArray = user_all_passwordsJson;
             } else if (typeof user_all_passwordsJson === 'object' && user_all_passwordsJson !== null) {
@@ -64,6 +69,7 @@ function Sidebar(props) {
         }
     }
 
+    // creates the Sidebar and maps all origins to the OriginItem Component
     return (
         <div className="sidebar">
             <button id="newPasswordButton" onClick={handleClick}>{props.whichPage === "password" ? "Go Back" : "New Password"}</button>

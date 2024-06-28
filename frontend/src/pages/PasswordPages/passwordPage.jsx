@@ -5,6 +5,7 @@ function PasswordPage(props) {
     const [password, setPassword] = useState([]);
     const [origin, setOrigin] = useState([]);
 
+    // every time the whichPage changes, the password and the origin get fetched and displayed
     useEffect(() => {
         const showPassword = async () => {
             const user_get = await fetch("/auth/profile", {

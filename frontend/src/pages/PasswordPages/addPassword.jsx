@@ -9,7 +9,8 @@ function AddPassword(props) {
 
     const handleAddPassword = async (e) => {
         e.preventDefault()
-        await fetch("/origins", {
+        // POST request to add the origin
+        const origin = await fetch("/origins", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -20,7 +21,7 @@ function AddPassword(props) {
                 origin_url: origin_url
             })
         })
-        const origins = await fetch("/origins", {
+        /*const origins = await fetch("/origins", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -34,7 +35,9 @@ function AddPassword(props) {
             if (originsJSONElement.origin_name === origin_name) {
                 password_origin_id = Number(originsJSONElement.origin_id)
             }
-        }
+        }*/
+        const originJson = await origin.json();
+        const password_origin_id = originJson.origin_id;
         const user_get = await fetch("/auth/profile", {
             method: "GET",
             headers: {
@@ -43,6 +46,7 @@ function AddPassword(props) {
         })
         const user_get_json = await user_get.json();
         const user_id = user_get_json.userId;
+        // creates a new password with the origin_id and the user_id
         await fetch("/passwords", {
             method: "POST",
             headers: {
@@ -58,6 +62,7 @@ function AddPassword(props) {
         props.whichPage_func("main")
     }
 
+    // sens a GET request to the server to generate a password
     const generatePasswd = async () => {
         const generatedPassword = await fetch("/passwords/gen", {
             method: "GET",
@@ -69,6 +74,7 @@ function AddPassword(props) {
         return generatedPasswordJson.password
     }
 
+    // adds the generated password to the site_password state and the input field
     const handleGenPasswd = () => {
         generatePasswd().then(r => {
             setSitePassword(r)
@@ -76,6 +82,7 @@ function AddPassword(props) {
         })
     }
 
+    // checks if the URL is valid
     const handleURLChange = (e) => {
        const url = e.target.value;
        setOriginUrl(url);

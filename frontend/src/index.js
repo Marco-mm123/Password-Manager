@@ -1,9 +1,20 @@
+/*
+*
+* @author Marco Matteo
+* @version 1.0
+* @date 2024-08-28
+* @description This is the Frontend of my Full-Stack Password Manager. It is written using React.js.
+*
+ */
+
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 try {
 
+    // this is all just Reacts stuff that gets created when you install React
     const root = ReactDOM.createRoot(document.getElementById('root'));
     root.render(
         <React.StrictMode>

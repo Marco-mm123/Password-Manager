@@ -3,6 +3,7 @@ import MainPage from "./pages/mainPage";
 import './App.css'
 
 function App() {
+    // the most important useStates in the whole app, whichPage is the page that gets displayed, JWT is the JSON Web Token
     const [whichPage, setWhichPage] = useState("login");
     const [JWT, setJWT] = useState("")
 

@@ -21,6 +21,7 @@ function EditPassword(props) {
             })
             const user_get_json = await user_get.json();
             const user_id = user_get_json.userId;
+            // fetches the password and the origin
             const password = await fetch(`/passwords/${Number(origin_id)}/${user_id}`, {
                 method: "GET",
                 headers: {
@@ -35,6 +36,7 @@ function EditPassword(props) {
                     "Authorization": `Bearer ${props.JWT}`,
                 },
             })
+            // sets the password and the origin into the useStates, so they can be displayed in the input fields
             const passwordJson = await password.json();
             const originJson = await origin.json();
             setPasswordString(passwordJson.password);
@@ -46,6 +48,7 @@ function EditPassword(props) {
         });
     }, [props.whichPage]);
 
+    // function that handles the submit of the form and updates the origin and the password
     async function handleSubmit(e) {
         e.preventDefault();
         const origin_id = Number(props.whichPage.split("_")[0]);
@@ -84,10 +87,12 @@ function EditPassword(props) {
         props.whichPage_func("main");
     }
 
+    // sends the user back to the main page
     const handleBackClick = () => {
         props.whichPage_func("main");
     }
 
+    // function that checks if the URL is valid
     const handleURLChange = (e) => {
         const url = e.target.value;
         setOriginURL(url);

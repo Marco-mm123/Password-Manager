@@ -9,7 +9,9 @@ function RegisterPage(props) {
 
     const handleRegister = async (e) => {
         e.preventDefault()
+        // creates a unique key for the user (plan was to use this for password encryption, but I didn't have enough time to implement it
         const key = uuidv4();
+        //creates a new user
         await fetch("/users", {
             method: "POST",
             headers: {

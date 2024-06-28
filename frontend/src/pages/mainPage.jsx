@@ -10,11 +10,13 @@ import LoginPage from "./auth/loginPage";
 
 function MainPage(props) {
 
+    // simple logout function
     function handleLogoutClick() {
         props.setJWT("");
         props.whichPage_func("login");
     }
 
+    // This is the main Page where it gets decided which page gets shown
     return (
         <>
             {

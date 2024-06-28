@@ -6,11 +6,13 @@ import { User } from '@prisma/client';
 export class UsersController {
   constructor(private usersService: UsersService) {}
 
+  //gets all the users from the DB
   @Get()
   getUsers(): Promise<User[]> {
     return this.usersService.getUsers();
   }
 
+  //creates a new user
   @Post()
   createUser(@Body() data: User): Promise<User> {
     return this.usersService.createUser(data);
