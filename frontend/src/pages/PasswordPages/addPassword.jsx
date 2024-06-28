@@ -5,6 +5,7 @@ function AddPassword(props) {
     const [origin_name, setOriginName] = useState("");
     const [origin_url, setOriginUrl] = useState("");
     const [site_password, setSitePassword] = useState("");
+    const [isUrlValid, setIsUrlValid] = useState(true);
 
     const handleAddPassword = async (e) => {
         e.preventDefault()
@@ -75,22 +76,39 @@ function AddPassword(props) {
         })
     }
 
+    const handleURLChange = (e) => {
+       const url = e.target.value;
+       setOriginUrl(url);
+
+       const urlPattern = /^(https?:\/\/)[\w.-]+(\.[a-z]{2,})+$/i;
+       setIsUrlValid(urlPattern.test(url));
+       if (isUrlValid) {
+           e.target.setCustomValidity('');
+       }else {
+           e.target.setCustomValidity('Please enter a valid URL');
+       }
+    }
+
     return (
         <div className="addPassword">
+            <div className="addPasswordContainer">
             <h2>Add Password</h2>
             <form name="addPassword" id="addPassword" onSubmit={handleAddPassword}>
                 <label htmlFor="origin_name">Where is this Password from:</label>
                 <input type="text" id="origin_name" name="origin_name" required
                        onChange={e => setOriginName(e.target.value)}/> <br/>
                 <label htmlFor="origin_url">Enter URL:</label>
-                <input type="text" id="origin_url" name="origin_url" required
-                       onChange={e => setOriginUrl(e.target.value)}/>
+                <input type="text" id="origin_url" name="origin_url" required placeholder="https://example.com"
+                       onChange={handleURLChange}/>
                 <label htmlFor="site_password">Enter Password:</label>
                 <input type="password" id="site_password" name="site_password" required
                        onChange={e => setSitePassword(e.target.value)}/>
-                <button type="submit">Submit</button>
+                <div className="SubmitButtonContainer">
+                    <button type="submit" className="addPasswordButton">Submit</button>
+                </div>
             </form>
-            <button onClick={handleGenPasswd}>Generate Password</button>
+            <button onClick={handleGenPasswd} className="addPasswordButton">Generate Password</button>
+        </div>
         </div>
     )
 }

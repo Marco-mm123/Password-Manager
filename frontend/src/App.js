@@ -3,7 +3,7 @@ import MainPage from "./pages/mainPage";
 import './App.css'
 
 function App() {
-    const [whichPage, setWhichPage] = useState("main");
+    const [whichPage, setWhichPage] = useState("login");
     const [JWT, setJWT] = useState("")
 
     const switchToPasswordPage = (id) => {

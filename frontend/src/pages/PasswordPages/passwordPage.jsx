@@ -48,12 +48,16 @@ function PasswordPage(props) {
     }, [props.whichPage]);
 
 
-
     return (
         <div className="PasswordPage">
-            <h1>This is the Password for {origin.origin_name} </h1>
-            <div className="passwordContainer">
-                <h2 id="password">{password.password}</h2>
+            <div className="PasswordPageContainer">
+                <h1>{origin.origin_name}</h1>
+                <div className="PasswordContainer">
+                    <div className="small">Password</div>
+                    <div className="spanBox"><h2 id="password">{password.password}</h2></div>
+                    <div className="small">Link to the page</div>
+                    <div className="spanBox"><h2 id="originURL"><a href={origin.origin_url}>{origin.origin_url}</a></h2></div>
+                </div>
             </div>
         </div>
     )

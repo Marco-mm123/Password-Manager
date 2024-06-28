@@ -28,6 +28,7 @@ function Sidebar(props) {
             }
         })
         if (user_all_passwords.status === 401) {
+            alert("Your Session has expired. Please login again.")
             props.whichPage_func("login")
         } else {
             const user_all_passwordsJson = await user_all_passwords.json();

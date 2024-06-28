@@ -8,7 +8,7 @@ function DeleteButton(props) {
         await fetch(`/origins/${origin_id}`, {
             method: "DELETE",
             headers: {
-                "Authentication": `Bearer ${props.JWT}`,
+                "Authorization": `Bearer ${props.JWT}`,
             }
         })
         props.whichPage_func("main")

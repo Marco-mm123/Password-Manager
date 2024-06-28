@@ -31,5 +31,6 @@
     margin: auto;
     text-align: center;
     padding: 5rem 2rem;
-    border: black groove;
+    border: black 2px solid;
+    box-shadow: 0 0 10px black;
 }

@@ -8,6 +8,7 @@ function EditPassword(props) {
     const [passwordString, setPasswordString] = useState("");
     const [originString, setOriginString] = useState("");
     const [originURLString, setOriginURLString] = useState("");
+    const [isUrlValid, setIsUrlValid] = useState(true);
 
     useEffect(() => {
         async function fetchPassword() {
@@ -76,30 +77,50 @@ function EditPassword(props) {
             },
             body: JSON.stringify({
                 origin_id: origin_id,
-                user_id: 1,
+                user_id: user_id,
                 password: password
             })
         })
         props.whichPage_func("main");
     }
 
+    const handleBackClick = () => {
+        props.whichPage_func("main");
+    }
+
+    const handleURLChange = (e) => {
+        const url = e.target.value;
+        setOriginURL(url);
+
+        const urlPattern = /^(https?:\/\/)[\w.-]+(\.[a-z]{2,})+$/i;
+        setIsUrlValid(urlPattern.test(url));
+        if (isUrlValid) {
+            e.target.setCustomValidity('');
+        }else {
+            e.target.setCustomValidity('Please enter a valid URL');
+        }
+    }
 
     return (
         <div className="editPassword">
+            <div className="editPasswordContainer">
             <h1>Edit Password</h1>
             <form name="editPasswordForm" id="editPasswordForm" onSubmit={handleSubmit}>
                 <label htmlFor="origin">Origin: </label>
                 <input type="text" id="origin" name="origin" required onChange={e => setOrigin(e.target.value)} placeholder={originString}/>
                 <br />
                 <label htmlFor="originURL">Origin URL: </label>
-                <input type="text" id="originURL" name="originURL" required onChange={e => setOriginURL(e.target.value)} placeholder={originURLString} />
+                <input type="text" id="originURL" name="originURL" required onChange={handleURLChange} placeholder={originURLString} />
                 <br />
                 <label htmlFor="password">Password: </label>
                 <input type="password" id="password" name="password" required onChange={e => setPassword(e.target.value)} placeholder={passwordString} />
                 <br />
-                <button type="submit">Edit</button>
+                <div className="SubmitButtonContainer">
+                    <button type="submit" className="editPasswordButton">Edit</button>
+                </div>
             </form>
-            <button className="editPasswordButton">Back</button>
+            <button className="editPasswordButton" onClick={handleBackClick}>Back</button>
+        </div>
         </div>
     )
 }

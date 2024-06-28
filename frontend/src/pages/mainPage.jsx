@@ -10,7 +10,7 @@ import LoginPage from "./auth/loginPage";
 
 function MainPage(props) {
 
-    function handleLoginClick() {
+    function handleLogoutClick() {
         props.setJWT("");
         props.whichPage_func("login");
     }
@@ -39,7 +39,7 @@ function MainPage(props) {
                 props.whichPage !== "main" && props.whichPage !== "password" && props.whichPage.split("_")[1] !== "edit" && props.whichPage !== "login" && props.whichPage !== "register" ? <PasswordPage whichPage_func={props.whichPage_func} whichPage={props.whichPage} JWT={props.JWT} setJWT={props.setJWT} /> : null
             }
             {
-                props.whichPage !== "login" && props.whichPage !== "register" ? <button id="loginButton" onClick={handleLoginClick}>Logout</button> : null
+                props.whichPage !== "login" && props.whichPage !== "register" ? <button id="loginButton" onClick={handleLogoutClick}>Logout</button> : null
             }
 
         </>
